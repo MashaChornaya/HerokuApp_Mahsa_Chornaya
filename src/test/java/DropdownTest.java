@@ -36,8 +36,13 @@ public class DropdownTest extends BaseTest {
        Assert.assertEquals(expectedOptions, actualOptions);
        select.selectByValue("1");
        select.selectByIndex(1);
+        WebElement first=driver.findElement(By.name("Option 1"));
+        driver.findElement(By.name("Option 1")).isSelected();
+        Assert.assertTrue( driver.findElement(By.name("Option 1")).isSelected(), "first element not selected");
        select.selectByVisibleText("Option 2");
        select.getFirstSelectedOption().getText();
-
+        WebElement sec=driver.findElement(By.name("Option 2"));
+        driver.findElement(By.name("Option 2")).isSelected();
+        Assert.assertTrue(driver.findElement(By.name("Option 2")).isSelected(), "second element not selected");
     }
 }
