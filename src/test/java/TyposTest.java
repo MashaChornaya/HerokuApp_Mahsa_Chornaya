@@ -14,8 +14,8 @@ public class TyposTest extends BaseTest{
     }
     @Test
     public void typosTest() throws InterruptedException {
-        String text=driver.findElement(By.tagName("div")).getText();
-        String actualText=driver.findElement(By.tagName("p")).getText();
-        Assert.assertEquals(actualText,"Sometimes you'll see a typo, other times you won't.","typo in text");
+       List <WebElement> text = driver.findElements(By.tagName("p"));
+       Assert.assertEquals(text.get(1).getText(),"Sometimes you'll see a typo, other times you won't.","typo in text");
     }
 }
+

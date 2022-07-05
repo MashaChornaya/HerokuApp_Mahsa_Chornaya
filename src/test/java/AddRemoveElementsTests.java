@@ -26,7 +26,7 @@ public class AddRemoveElementsTests extends BaseTest{
     public void testAddRemove() {
         WebElement addButton = driver.findElement(By.xpath("//button[text()='Add Element']"));
         List<WebElement> deleteButtons = driver.findElements(By.xpath("//button[text()='Delete']"));
-        deleteButtons.isEmpty();
+
         Assert.assertTrue(deleteButtons.isEmpty(),"Not empty");
         addButton.click();
         addButton.click();
@@ -34,9 +34,9 @@ public class AddRemoveElementsTests extends BaseTest{
         deleteButtons.size();
         deleteButtons = driver.findElements(By.xpath("//button[text()='Delete']"));
         deleteButtons.get(0).click();
-        deleteButtons.size();
+        deleteButtons = driver.findElements(By.xpath("//button[text()='Delete']"));
 
-        Assert.assertEquals(deleteButtons.size(),deleteButtons.size(),"wrong number of buttons");
+        Assert.assertEquals(deleteButtons.size(),1,"wrong number of buttons");
     }
 }
 

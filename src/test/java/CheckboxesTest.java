@@ -16,7 +16,6 @@ public class CheckboxesTest extends BaseTest {
     public void testCheckboxes(){
         WebElement firstCheckBox=driver.findElement(By.cssSelector("[type=checkbox]"));
 
-
       firstCheckBox.isEnabled();
         Assert.assertTrue(firstCheckBox.isEnabled(),"first checkbox is selected");
       firstCheckBox.click();
