@@ -1,4 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -16,7 +17,13 @@ public class BaseTest {
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         }
-        @AfterClass
-        public void tearDown() {driver.quit();}
+    public boolean isElementPresent(By locator) {
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        boolean isPresent = !driver.findElements(locator).isEmpty();
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        return isPresent;
+    }
+        //@AfterClass
+       // public void tearDown() {driver.quit();}
     }
 
