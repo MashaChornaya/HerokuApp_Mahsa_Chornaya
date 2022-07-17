@@ -23,7 +23,7 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         return isPresent;
     }
-        //@AfterClass
-       // public void tearDown() {driver.quit();}
+        @AfterClass
+        public void tearDown() {driver.quit();}
     }
 

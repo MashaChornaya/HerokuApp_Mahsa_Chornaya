@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 
 
 
-
 public class DynamicControlsTest extends BaseTest {
     @BeforeMethod
     public void navigate() {
@@ -25,20 +24,25 @@ public class DynamicControlsTest extends BaseTest {
         WebElement removeButton = driver.findElement(By.xpath("//button[text()='Remove']"));
         Assert.assertTrue(removeButton.isDisplayed());
         removeButton.click();
+
+        isElementPresent(By.xpath("//p[@id='message']"));
+
         String  text=driver.findElement(By.xpath("//p[@id='message']")).getText();
-
-        Assert.assertTrue(isElementPresent(By.xpath("//p[@id='message']")),"Text its gone not here");
-
+        Assert.assertEquals(text,"It's gone!","text not here");
         Assert.assertFalse(isElementPresent(By.xpath("//input[@type='checkbox']")),"Checkbox is here");
+        //Assert.assertTrue(checkboxBird.);//был фолс
+
 
         WebElement input=driver.findElement(By.xpath("//input"));
         Assert.assertFalse(input.isEnabled(),"input enabled");
         WebElement enableButton= driver.findElement(By.xpath("//button[text()='Enable']"));
         Assert.assertTrue(enableButton.isDisplayed());
         enableButton.click();
-        String textTwo=driver.findElement(By.xpath("//p[@id='message']")).getText();
-        Assert.assertTrue(isElementPresent(By.xpath("//p[@id='message']")),"Text its enabled not here");
 
+        isElementPresent(By.xpath("//p[@id='message']"));
+
+        String textTwo=driver.findElement(By.xpath("//p[@id='message']")).getText();
+        Assert.assertEquals(textTwo,"It's enabled!","text not here");
         Assert.assertTrue(input.isEnabled(),"input disabled");
     }
 }

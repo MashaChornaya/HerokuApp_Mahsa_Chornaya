@@ -12,15 +12,15 @@ public class FrameTest extends BaseTest{
     }
     @Test
     public void iframeTest() {
-            WebElement iframe = driver.findElement(By.xpath("//a[@href='/iframe']"));
-            Assert.assertTrue(iframe.isDisplayed());
-            iframe.click();
+            WebElement secondTitle = driver.findElement(By.xpath("//a[@href='/iframe']"));
+            Assert.assertTrue(secondTitle.isDisplayed());
+            secondTitle.click();
+
+            WebElement iframe=driver.findElement(By.tagName("iframe"));
             driver.switchTo().frame("mce_0_ifr");
             String frameText = driver.findElement(By.cssSelector("#tinymce p")).getText();
-            System.out.println(frameText);
             Assert.assertEquals(frameText,"Your content goes here.");
             driver.switchTo().defaultContent();
             String hText = driver.findElement(By.cssSelector(".example h3")).getText();
-            System.out.println(hText);
             Assert.assertEquals(hText,"An iFrame containing the TinyMCE WYSIWYG Editor");
 }}

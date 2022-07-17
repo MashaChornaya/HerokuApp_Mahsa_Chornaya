@@ -25,7 +25,6 @@ public class ContextMenuTest extends BaseTest {
     Alert firstAlert = driver.switchTo().alert();
     String alertText = firstAlert.getText();
     Assert.assertFalse(alertText.isEmpty());
-    System.out.println(alertText);
     firstAlert.accept();
     driver.switchTo().defaultContent();
     }
