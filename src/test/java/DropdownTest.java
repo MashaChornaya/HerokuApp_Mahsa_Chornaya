@@ -28,7 +28,6 @@ public class DropdownTest extends BaseTest {
        Select select=new Select(dropdownElement);
        List<WebElement> options=select.getOptions();
        List<String> expectedOptions= new ArrayList<>();
-
        expectedOptions.add("Please select an option");
        expectedOptions.add("Option 1");
        expectedOptions.add("Option 2");
@@ -38,8 +37,7 @@ public class DropdownTest extends BaseTest {
        select.selectByIndex(1);
        Assert.assertEquals(select.getFirstSelectedOption().getText(), "Option 1","first element not selected");
        select.selectByVisibleText("Option 2");
-       select.getFirstSelectedOption().getText();
-        Assert.assertEquals(select.getFirstSelectedOption().getText(), "Option 2","second element not selected");
+       Assert.assertEquals(select.getFirstSelectedOption().getText(), "Option 2","second element not selected");
 
     }
 }

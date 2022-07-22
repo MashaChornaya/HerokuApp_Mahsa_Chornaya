@@ -14,28 +14,20 @@ public class InputsTest extends BaseTest{
         }
         @Test
         public void inputsTest() throws InterruptedException {
-            WebElement testInput=driver.findElement(By.tagName("input"));
-            testInput.sendKeys("fdvdfv");
-            Assert.assertEquals(testInput.getText(),"","not clear");
+            WebElement fieldInput=driver.findElement(By.tagName("input"));
+            fieldInput.sendKeys("fdvdfv");
+            Assert.assertEquals(fieldInput.getAttribute("value"),"","not clear");
 
-            WebElement testInput2=driver.findElement(By.tagName("input"));
-            testInput2.sendKeys("2");
-            WebElement elementOne=driver.findElement(By.cssSelector("[type='number']"));
-            String actText1=driver.findElement(By.cssSelector("[type='number']")).getText();
-            Assert.assertEquals(actText1,"2","no numbers");
+            fieldInput.sendKeys("2");
+            String firstResult=fieldInput.getAttribute("value");
+            Assert.assertEquals(firstResult,"2","no numbers");
 
-            WebElement testInput3=driver.findElement(By.tagName("input"));
-            testInput.sendKeys(Keys.ARROW_UP);
-            WebElement elementTwo=driver.findElement(By.cssSelector("[type='number']"));
+            fieldInput.sendKeys(Keys.ARROW_UP);
+            String secondResult=fieldInput.getAttribute("value");
+            Assert.assertEquals(secondResult,"3","no numbers");
 
-            String actText2=driver.findElement(By.cssSelector("[type='number']")).getText();
-            Assert.assertEquals(actText2,"3","no numbers");
-
-            WebElement testInput4=driver.findElement(By.tagName("input"));
-            testInput.sendKeys(Keys.ARROW_DOWN);
-            WebElement elementThree=driver.findElement(By.cssSelector("[type='number']"));
-            String actText3=driver.findElement(By.cssSelector("[type='number']")).getText();
-            Assert.assertEquals(actText3,"2","no numbers");
-
+            fieldInput.sendKeys(Keys.ARROW_DOWN);
+            String thirdResult=fieldInput.getAttribute("value");
+            Assert.assertEquals(thirdResult,"2","no numbers");
     }
 }
